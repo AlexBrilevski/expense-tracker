@@ -20,6 +20,11 @@ const ExpenseForm = ({ onSaveExpense }) => {
     e.preventDefault();
 
     onSaveExpense({ ...expenseData, date: new Date(expenseData.date) });
+    setExpenseData({
+      title: '',
+      amount: '',
+      date: '',
+    });
   };
 
   return (
@@ -29,6 +34,7 @@ const ExpenseForm = ({ onSaveExpense }) => {
           <label>Title</label>
           <input
             type="text"
+            value={expenseData.title}
             onChange={(e) => inputChangeHandler('title', e.target.value)}
           />
         </div>
@@ -38,6 +44,7 @@ const ExpenseForm = ({ onSaveExpense }) => {
             type="number"
             min="0.01"
             step="0.01"
+            value={expenseData.amount}
             onChange={(e) => inputChangeHandler('amount', e.target.value)}
           />
         </div>
@@ -45,6 +52,7 @@ const ExpenseForm = ({ onSaveExpense }) => {
           <label>Date</label>
           <input
             type="date"
+            value={expenseData.date}
             onChange={(e) => inputChangeHandler('date', e.target.value)}
           />
         </div>
