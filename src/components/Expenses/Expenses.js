@@ -5,7 +5,7 @@ import ExpenseItem from "./ExpenseItem";
 import './Expenses.css';
 
 const Expenses = ({items}) => {
-  const [selectedYear, setSelectedYear] = useState('');
+  const [selectedYear, setSelectedYear] = useState('2020');
 
   const onSelectYear = (year) => {
     setSelectedYear(year);
@@ -13,7 +13,7 @@ const Expenses = ({items}) => {
 
   return (
     <Card className="expenses">
-      <ExpensesFilter onFilter={onSelectYear}/>
+      <ExpensesFilter selected={selectedYear} onFilter={onSelectYear}/>
       {items.map(item => (
         <ExpenseItem key={item.id} {...item} />
       ))}
